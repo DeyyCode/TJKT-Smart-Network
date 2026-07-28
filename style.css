@@ -99,8 +99,26 @@ nav {
 
 nav h1 {
   margin: 0;
-  font-size: 25px;
+  font-size: 18px;
   line-height: 1;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.85;
+}
+
+.logo-svg {
+  width: 36px;
+  height: 36px;
 }
 
 nav ul {
@@ -429,18 +447,24 @@ footer p {
   }
 
   .hero {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-top: 60px;
     padding-bottom: 60px;
     text-align: center;
+  }
+  .hero-gambar {
+    margin-bottom: 30px;
+    width: 100%;
   }
 
   .hero h2 {
     font-size: 36px;
   }
 
-  .hero-gambar img {
+  .hero-gambar .slideshow {
     max-width: 450px;
+    height: 320px;
+    margin: 0 auto;
   }
 
   .kartu {
