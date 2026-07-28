@@ -1,20 +1,57 @@
 :root {
-  --primary: #7c3aed;
-  --primary-hover: #6d28d9;
-  --primary-light: #f3e8ff;
-  --primary-accent: #c084fc;
-  --bg-main: #faf5ff;
-  --bg-header: #1e1b4b;
-  --bg-hero: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-  --bg-kontak: #ede9fe;
-  --text-main: #2e1065;
-  --text-muted: #6b21a8;
-  --card-shadow: 0 8px 20px rgba(124, 58, 237, 0.08);
+  --primary: #a855f7;
+  --primary-hover: #9333ea;
+  --primary-light: rgba(168, 85, 247, 0.15);
+  --primary-accent: #d8b4fe;
+  --bg-main: #1a0a2e;
+  --bg-header: #12061f;
+  --bg-hero: linear-gradient(135deg, rgba(30, 10, 60, 0.85) 0%, rgba(50, 15, 90, 0.85) 100%);
+  --bg-kontak: rgba(30, 10, 60, 0.6);
+  --text-main: #f3e8ff;
+  --text-muted: #d8b4fe;
+  --card-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
+
+/* =========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================= */
+.anim-ready {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.anim-ready.slide-up {
+  transform: translateY(50px);
+}
+
+.anim-ready.slide-left {
+  transform: translateX(-50px);
+}
+
+.anim-ready.slide-right {
+  transform: translateX(50px);
+}
+
+.anim-ready.pop-in {
+  transform: scale(0.85);
+}
+
+.anim-ready.zoom-in {
+  transform: scale(0.7);
+}
+
+.anim-ready.anim-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 
 * {
   box-sizing: border-box;
@@ -24,7 +61,11 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--text-main);
-  background-color: var(--bg-main);
+  background: linear-gradient(135deg, #1a0a2e 0%, #0f0520 50%, #1e0a3c 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 header {
@@ -35,6 +76,18 @@ header {
   color: white;
   background: linear-gradient(135deg, #6d28d9 0%, #5b21b6 100%);
   box-shadow: 0 4px 24px rgba(109, 40, 217, 0.35);
+}
+
+#scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #06b6d4, #a855f7, #ec4899);
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+  border-radius: 0 2px 2px 0;
 }
 
 nav {
@@ -78,7 +131,9 @@ nav a:hover {
   justify-content: space-between;
   gap: 50px;
   padding: 80px 10%;
-  background: var(--bg-hero);
+  background: linear-gradient(135deg, rgba(30, 10, 60, 0.75) 0%, rgba(50, 15, 90, 0.65) 100%);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 .hero-teks {
@@ -96,14 +151,14 @@ nav a:hover {
   margin-bottom: 20px;
   font-size: 46px;
   line-height: 1.2;
-  color: #1e1b4b;
+  color: #f3e8ff;
 }
 
 .hero-teks p {
   margin-bottom: 30px;
   font-size: 17px;
   line-height: 1.7;
-  color: #4c1d95;
+  color: #d8b4fe;
 }
 
 .tombol {
@@ -146,15 +201,17 @@ nav a:hover {
 #layanan {
   padding: 70px 10%;
   text-align: center;
-  background: rgba(243, 232, 255, 0.65);
-  backdrop-filter: blur(10px);
+  background: rgba(20, 5, 40, 0.6);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 #layanan h2 {
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 34px;
-  color: #1e1b4b;
+  color: #f3e8ff;
 }
 
 .deskripsi-bagian {
@@ -202,18 +259,21 @@ nav a:hover {
   flex: 0 0 320px;
   scroll-snap-align: start;
   padding: 28px;
-  background-color: white;
-  border: 1px solid #e9d5ff;
+  background: rgba(80, 20, 140, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.45);
   border-radius: 12px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
   text-align: left;
 }
 
 .kartu:hover {
   transform: translateY(-5px);
-  border-color: #c084fc;
-  box-shadow: 0 15px 30px rgba(124, 58, 237, 0.15);
+  border-color: rgba(216, 180, 254, 0.7);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.35), 0 0 20px rgba(168, 85, 247, 0.15);
+  background: rgba(100, 30, 170, 0.3);
 }
 
 .kartu h3 {
@@ -224,7 +284,7 @@ nav a:hover {
 
 .kartu p {
   line-height: 1.6;
-  color: #4a5568;
+  color: #d8b4fe;
 }
 
 .geser-tombol {
@@ -269,24 +329,28 @@ nav a:hover {
 .kontak {
   padding: 70px 10%;
   text-align: center;
-  background: rgba(237, 233, 254, 0.65);
-  backdrop-filter: blur(10px);
+  background: rgba(20, 5, 40, 0.65);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(168, 85, 247, 0.15);
 }
 
 .kontak h2 {
   margin-top: 0;
   font-size: 34px;
-  color: #1e1b4b;
+  color: #f3e8ff;
 }
 
 .informasi-kontak {
   max-width: 500px;
   margin: 30px auto 0;
   padding: 25px;
-  background-color: white;
+  background: rgba(80, 20, 140, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: 12px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid #e9d5ff;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #d8b4fe;
 }
 
 .informasi-kontak strong {
@@ -398,18 +462,22 @@ footer p {
 }
 
 .kartu-detail {
-  background: white;
-  border: 1px solid #e9d5ff;
+  background: rgba(80, 20, 140, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.45);
   border-radius: 16px;
   padding: 35px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   scroll-margin-top: 30px;
   transition: all 0.3s ease;
+  color: #d8b4fe;
 }
 
 .kartu-detail:hover {
-  border-color: #c084fc;
-  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.12);
+  border-color: rgba(216, 180, 254, 0.7);
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.35), 0 0 20px rgba(168, 85, 247, 0.15);
+  background: rgba(100, 30, 170, 0.3);
 }
 
 .detail-header {
@@ -435,7 +503,7 @@ footer p {
 
 .detail-header h2 {
   margin: 0 0 5px 0;
-  color: #1e1b4b;
+  color: #f3e8ff;
   font-size: 24px;
 }
 
@@ -457,14 +525,14 @@ footer p {
 .detail-kolom h3 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #1e1b4b;
+  color: #f3e8ff;
   font-size: 18px;
 }
 
 .daftar-fitur {
   margin: 0;
   padding-left: 20px;
-  color: #334155;
+  color: #d8b4fe;
 }
 
 .daftar-fitur li {
@@ -512,12 +580,14 @@ footer p {
 /* KALKULATOR ESTIMASI & PENGISIAN TERPILIH */
 
 .section-estimasi {
-  background: white;
-  border: 1.5px solid #e9d5ff;
+  background: rgba(80, 20, 140, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(168, 85, 247, 0.45);
   border-radius: 20px;
   padding: 40px;
   margin-top: 20px;
-  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.08);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   scroll-margin-top: 40px;
 }
 
@@ -528,7 +598,7 @@ footer p {
 
 .judul-estimasi h2 {
   font-size: 28px;
-  color: #1e1b4b;
+  color: #f3e8ff;
   margin: 0 0 10px 0;
 }
 
@@ -558,7 +628,7 @@ footer p {
 
 .grup-input label {
   font-weight: 600;
-  color: #1e1b4b;
+  color: #d8b4fe;
   font-size: 15px;
 }
 
@@ -569,12 +639,13 @@ footer p {
   max-width: 100%;
   box-sizing: border-box;
   padding: 12px 16px;
-  border: 1.5px solid #d8b4fe;
+  border: 1.5px solid rgba(168, 85, 247, 0.5);
   border-radius: 10px;
   font-family: inherit;
   font-size: 15px;
-  color: #1e1b4b;
-  background-color: #faf5ff;
+  color: #f3e8ff;
+  background: rgba(60, 15, 100, 0.4);
+  backdrop-filter: blur(8px);
   transition: all 0.2s ease;
   outline: none;
 }
@@ -583,8 +654,8 @@ footer p {
 .grup-input input:focus,
 .grup-input textarea:focus {
   border-color: var(--primary);
-  background-color: white;
-  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.15);
+  background: rgba(80, 20, 140, 0.5);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2);
 }
 
 .hasil-kolom {
@@ -895,4 +966,648 @@ footer p {
   .geser-showcase-kanan {
     right: 10px;
   }
+}
+
+/* =========================================
+   SPEED TEST SECTION
+   ========================================= */
+
+.speedtest-section {
+  padding: 70px 10%;
+  background: rgba(10, 2, 25, 0.7);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.speedtest-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.speedtest-header h2 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  color: #f3e8ff;
+}
+
+/* IP Info Bar */
+.ip-info-bar {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.ip-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(80, 20, 140, 0.25);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 12px;
+  padding: 12px 20px;
+  min-width: 150px;
+  backdrop-filter: blur(10px);
+}
+
+.ip-info-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a855f7;
+}
+
+.ip-info-val {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f3e8ff;
+  text-align: center;
+}
+
+/* Main area: gauge + metric cards */
+.speedtest-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+/* Circular Gauge */
+.gauge-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  flex-shrink: 0;
+}
+
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.4));
+}
+
+.gauge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.gauge-num {
+  font-size: 42px;
+  font-weight: 800;
+  color: #f3e8ff;
+  line-height: 1;
+}
+
+.gauge-unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: #a855f7;
+  letter-spacing: 1px;
+}
+
+
+/* Metric Cards */
+.metric-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metric-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(80, 20, 140, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: 14px;
+  padding: 16px 24px;
+  backdrop-filter: blur(12px);
+  min-width: 240px;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  border-color: rgba(216, 180, 254, 0.6);
+  background: rgba(100, 30, 170, 0.3);
+}
+
+.metric-icon {
+  font-size: 28px;
+  width: 44px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.metric-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #a855f7;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f3e8ff;
+  min-width: 110px;
+  text-align: right;
+}
+
+/* Progress bar */
+.speedtest-progress-wrap {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.speedtest-progress-bar {
+  height: 6px;
+  background: rgba(168, 85, 247, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto 12px;
+}
+
+.speedtest-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+}
+
+.status-text {
+  color: #d8b4fe;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Result Panel */
+.result-panel {
+  max-width: 600px;
+  margin: 0 auto 24px;
+  padding: 14px 20px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 10px;
+  color: #86efac;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.result-panel.show {
+  display: block;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Start Button */
+.btn-speedtest {
+  display: block;
+  margin: 0 auto;
+  padding: 16px 48px;
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(168, 85, 247, 0.45);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-speedtest:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9333ea 0%, #6d28d9 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(168, 85, 247, 0.6);
+}
+
+.btn-speedtest:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 786px) {
+  .speedtest-main {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .metric-cards {
+    width: 100%;
+  }
+
+  .metric-card {
+    min-width: unset;
+  }
+
+  .ip-info-bar {
+    gap: 10px;
+  }
+
+  .ip-info-item {
+    min-width: 130px;
+  }
+}
+
+/* =========================================
+   KONTAK — 3 INTERACTIVE CARDS
+   ========================================= */
+
+.kontak-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.kontak-card {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 36px 24px;
+  background: rgba(80, 20, 140, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.kontak-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.kontak-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(216, 180, 254, 0.7);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.4), 0 0 30px rgba(168, 85, 247, 0.15);
+  background: rgba(100, 30, 170, 0.3);
+}
+
+.kontak-card:hover::before {
+  opacity: 1;
+}
+
+.kontak-card-icon {
+  font-size: 44px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(168, 85, 247, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.kontak-card:hover .kontak-card-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.kontak-card-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #a855f7;
+}
+
+.kontak-card-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #f3e8ff;
+  word-break: break-all;
+}
+
+.kontak-card-action {
+  font-size: 12px;
+  color: #d8b4fe;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  margin-top: 4px;
+}
+
+.kontak-card:hover .kontak-card-action {
+  opacity: 1;
+  color: #e9d5ff;
+}
+
+@media (max-width: 786px) {
+  .kontak-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kontak-card {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* =========================================
+   NETWORK SIMULATOR GAME
+   ========================================= */
+
+.simulator-section {
+  padding: 70px 10%;
+  background: rgba(8, 2, 20, 0.75);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(168, 85, 247, 0.2);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.simulator-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.simulator-header h2 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  color: #f3e8ff;
+}
+
+/* Toolbar */
+.simulator-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 14px 20px;
+  background: rgba(60, 15, 100, 0.3);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.toolbar-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #a855f7;
+  margin-right: 4px;
+}
+
+.toolbar-sep {
+  flex: 1;
+}
+
+.tool-device-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(80, 20, 140, 0.35);
+  border: 1.5px solid rgba(168, 85, 247, 0.45);
+  border-radius: 10px;
+  color: #f3e8ff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.tool-device-btn:hover {
+  background: rgba(120, 40, 200, 0.5);
+  border-color: rgba(216, 180, 254, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(168, 85, 247, 0.3);
+}
+
+.tool-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.tool-label {
+  font-size: 13px;
+}
+
+.sim-ctrl-btn {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+}
+
+.sim-ctrl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(168, 85, 247, 0.5);
+}
+
+.sim-ctrl-btn.danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+}
+
+.sim-ctrl-btn.danger:hover {
+  box-shadow: 0 8px 22px rgba(239, 68, 68, 0.5);
+}
+
+/* Canvas wrap */
+.simulator-canvas-wrap {
+  width: 100%;
+  height: 400px;
+  background: rgba(15, 5, 35, 0.85);
+  border: 1.5px solid rgba(168, 85, 247, 0.3);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 40px rgba(100, 20, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  cursor: crosshair;
+}
+
+.simulator-canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Status bar */
+.netgame-status {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.netgame-status.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.netgame-status.info {
+  background: rgba(80, 20, 140, 0.3);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+}
+
+.netgame-status.success {
+  background: rgba(22, 163, 74, 0.15);
+  border: 1px solid rgba(22, 163, 74, 0.4);
+  color: #86efac;
+}
+
+.netgame-status.warning {
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid rgba(234, 179, 8, 0.35);
+  color: #fde68a;
+}
+
+.netgame-status.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+/* Legend */
+.sim-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: #d8b4fe;
+  opacity: 0.8;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-dot.purple {
+  background: #a855f7;
+  box-shadow: 0 0 6px #a855f7;
+}
+
+.legend-dot.white {
+  background: #f3e8ff;
+}
+
+.legend-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.legend-dot.red {
+  background: #ef4444;
+}
+
+@media (max-width: 786px) {
+  .simulator-toolbar {
+    gap: 8px;
+  }
+
+  .toolbar-sep {
+    display: none;
+  }
+
+  .simulator-canvas-wrap {
+    height: 320px;
+  }
+
+  .sim-legend {
+    gap: 10px;
+  }
+
+  .legend-item {
+    font-size: 11px;
+  }
+}
+
+/* Kirim Data button */
+.sim-ctrl-btn.send {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+}
+
+.sim-ctrl-btn.send:hover {
+  box-shadow: 0 8px 22px rgba(6, 182, 212, 0.55);
+}
+
+@keyframes packetPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(6, 182, 212, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+  }
+}
+
+.sim-ctrl-btn.send.active {
+  animation: packetPulse 1.2s ease infinite;
 }

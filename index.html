@@ -32,15 +32,26 @@
         </li>
 
         <li>
+          <a href="#speedtest">Speed Test</a>
+        </li>
+
+        <li>
+          <a href="#simulator">Simulator</a>
+        </li>
+
+        <li>
           <a href="#kontak">Kontak</a>
         </li>
 
       </ul>
 
     </nav>
+    <!-- Scroll Progress Bar inside header to stick to its bottom edge -->
+    <div id="scroll-progress-bar"></div>
   </header>
 
   <!-- ISI WEB-->
+
 
   <main>
     <section id="beranda" class="hero">
@@ -295,28 +306,154 @@
       </div>
     </section>
 
+    <!-- Speed Test -->
+    <section id="speedtest" class="speedtest-section">
+      <div class="speedtest-header">
+        <h2>🚀 Cek Kecepatan Internet Kamu</h2>
+        <p class="deskripsi-bagian">Ukur kecepatan download, upload, dan ping koneksimu secara real-time langsung dari browser.</p>
+      </div>
+
+      <!-- IP Info Bar -->
+      <div class="ip-info-bar">
+        <div class="ip-info-item"><span class="ip-info-label">IP Address</span><span id="ip-addr" class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">ISP</span><span id="isp-name" class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">Lokasi</span><span id="city-name" class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">Jenis Koneksi</span><span id="connection-type" class="ip-info-val">—</span></div>
+      </div>
+
+      <!-- Gauge + Metrics -->
+      <div class="speedtest-main">
+
+        <!-- Circular Gauge -->
+        <div class="gauge-wrapper">
+          <svg class="gauge-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#a855f7"/>
+                <stop offset="100%" stop-color="#ec4899"/>
+              </linearGradient>
+            </defs>
+            <!-- Track -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="14"/>
+            <!-- Arc -->
+            <circle id="gauge-bar" cx="100" cy="100" r="80" fill="none"
+              stroke="url(#gaugeGrad)" stroke-width="14" stroke-linecap="round"
+              stroke-dasharray="502" stroke-dashoffset="502"
+              transform="rotate(-90 100 100)"
+              style="transition: stroke-dashoffset 0.6s ease;"/>
+          </svg>
+          <div class="gauge-center">
+            <span id="gauge-value" class="gauge-num">0</span>
+            <span id="gauge-label" class="gauge-unit">Mbps</span>
+          </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metric-cards">
+          <div class="metric-card" id="card-ping">
+            <div class="metric-icon">📡</div>
+            <div class="metric-label">Ping</div>
+            <div id="val-ping" class="metric-value">— ms</div>
+          </div>
+          <div class="metric-card" id="card-download">
+            <div class="metric-icon">⬇️</div>
+            <div class="metric-label">Download</div>
+            <div id="val-download" class="metric-value">— Mbps</div>
+          </div>
+          <div class="metric-card" id="card-upload">
+            <div class="metric-icon">⬆️</div>
+            <div class="metric-label">Upload</div>
+            <div id="val-upload" class="metric-value">— Mbps</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="speedtest-progress-wrap">
+        <div class="speedtest-progress-bar"><div id="progress-bar" class="speedtest-progress-fill"></div></div>
+        <p id="status-text" class="status-text">Tekan tombol untuk memulai pengukuran</p>
+      </div>
+
+      <!-- Result Tip -->
+      <div id="result-panel" class="result-panel">
+        <span>✅ Pengukuran selesai! Kecepatan koneksimu sudah terukur di atas.</span>
+      </div>
+
+      <button id="btn-start" class="btn-speedtest">⚡ Mulai Speed Test</button>
+    </section>
+
+    <!-- Network Simulator Game -->
+    <section id="simulator" class="simulator-section">
+      <div class="simulator-header">
+        <h2>🖧 Network Simulator</h2>
+        <p class="deskripsi-bagian">Simulasikan jaringan komputer sendiri — sambungkan PC dan Router dengan kabel, lalu test koneksinya!</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="simulator-toolbar">
+        <span class="toolbar-title">📦 Perangkat</span>
+        <button class="tool-device-btn" data-type="pc" id="tool-pc">
+          <span class="tool-icon">💻</span>
+          <span class="tool-label">PC</span>
+        </button>
+        <button class="tool-device-btn" data-type="router" id="tool-router">
+          <span class="tool-icon">📡</span>
+          <span class="tool-label">Router</span>
+        </button>
+        <div class="toolbar-sep"></div>
+        <button class="sim-ctrl-btn" id="btn-test-net" title="Test Koneksi">⚡ Test Koneksi</button>
+        <button class="sim-ctrl-btn send" id="btn-send-data" title="Kirim Data">📦 Kirim Data</button>
+        <button class="sim-ctrl-btn danger" id="btn-reset-net" title="Reset Canvas">🗑️ Reset</button>
+      </div>
+
+      <!-- Canvas Area -->
+      <div class="simulator-canvas-wrap">
+        <canvas id="net-canvas"></canvas>
+      </div>
+
+      <!-- Status -->
+      <div id="netgame-status" class="netgame-status"></div>
+
+      <!-- Legend -->
+      <div class="sim-legend">
+        <div class="legend-item"><span class="legend-dot purple"></span> Klik device → Pilih</div>
+        <div class="legend-item"><span class="legend-dot white"></span> Klik device lain → Sambung kabel</div>
+        <div class="legend-item"><span class="legend-dot green"></span> Kabel hijau = Koneksi aktif</div>
+        <div class="legend-item"><span class="legend-dot red"></span> Klik kanan device → Hapus</div>
+      </div>
+    </section>
+
     <!-- Kontak -->
     <section id="kontak" class="kontak">
 
       <h2>Hubungi Kami</h2>
-      <p>Konsultasikan kebutuhan jaringan komputer anda bersama TJKT Smart Network.</p>
+      <p class="deskripsi-bagian">Konsultasikan kebutuhan jaringan komputer anda bersama TJKT Smart Network.</p>
 
-      <div class="informasi-kontak">
+      <div class="kontak-cards">
 
-        <p>
-          <strong>Email:</strong>
-          alyasworo@gmail.com
-        </p>
+        <!-- Email Card -->
+        <a href="mailto:alyasworo@gmail.com" class="kontak-card" id="card-email" title="Kirim Email">
+          <div class="kontak-card-icon">✉️</div>
+          <div class="kontak-card-label">Email</div>
+          <div class="kontak-card-value">alyasworo@gmail.com</div>
+          <div class="kontak-card-action">Klik untuk kirim email →</div>
+        </a>
 
-        <p>
-          <strong>Telepon:</strong>
-          0896-6583-1166
-        </p>
+        <!-- WhatsApp Card -->
+        <a href="https://wa.me/6289665831166" target="_blank" rel="noopener" class="kontak-card" id="card-wa" title="Chat WhatsApp">
+          <div class="kontak-card-icon">💬</div>
+          <div class="kontak-card-label">Telepon / WhatsApp</div>
+          <div class="kontak-card-value">0896-6583-1166</div>
+          <div class="kontak-card-action">Klik untuk chat WA →</div>
+        </a>
 
-        <p>
-          <strong>Lokasi:</strong>
-          SMK NEGERI 2 SURAKARTA
-        </p>
+        <!-- Lokasi Card -->
+        <a href="https://maps.google.com/?q=SMK+Negeri+2+Surakarta" target="_blank" rel="noopener" class="kontak-card" id="card-lokasi" title="Lihat di Google Maps">
+          <div class="kontak-card-icon">📍</div>
+          <div class="kontak-card-label">Lokasi</div>
+          <div class="kontak-card-value">SMK Negeri 2 Surakarta</div>
+          <div class="kontak-card-action">Klik untuk buka Maps →</div>
+        </a>
 
       </div>
 
@@ -409,6 +546,80 @@
         updateSliderButtons(sliderLit, btnLeftLit, btnRightLit);
       });
     }
+  </script>
+
+  <script src="speedtest.js"></script>
+  <script src="network-game.js"></script>
+
+  <script>
+    // =============================================
+    // SCROLL REVEAL — IntersectionObserver
+    // =============================================
+    (function () {
+      // [CSS selector, animation class, stagger?]
+      const groups = [
+        ['.hero-teks',              'slide-left',  false],
+        ['.hero-gambar',            'slide-right', false],
+        ['#layanan h2',             'slide-up',    false],
+        ['#layanan .deskripsi-bagian', 'slide-up', false],
+        ['.kartu',                  'slide-up',    true ],
+        ['.literasi-header',        'slide-up',    false],
+        ['.literasi-header .deskripsi-bagian', 'slide-up', false],
+        ['.speedtest-header h2',    'slide-up',    false],
+        ['.speedtest-header .deskripsi-bagian', 'slide-up', false],
+        ['.ip-info-item',           'pop-in',      true ],
+        ['.metric-card',            'slide-left',  true ],
+        ['.gauge-wrapper',          'zoom-in',     false],
+        ['.simulator-header',       'slide-up',    false],
+        ['.simulator-toolbar',      'slide-up',    false],
+        ['.kontak h2',              'slide-up',    false],
+        ['.kontak .deskripsi-bagian', 'slide-up',  false],
+        ['.kontak-card',            'pop-in',      true ],
+        ['.kartu-detail',           'slide-up',    true ],
+        ['.section-estimasi',       'slide-up',    false],
+        ['.judul-estimasi',         'slide-up',    false],
+        ['.sim-legend',             'slide-up',    false],
+        ['.sim-ctrl-btn',           'pop-in',      true ],
+      ];
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('anim-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        groups.forEach(([sel, animClass, stagger]) => {
+          document.querySelectorAll(sel).forEach((el, i) => {
+            if (!el.classList.contains('anim-ready')) {
+              el.classList.add('anim-ready', animClass);
+              if (stagger) {
+                el.style.transitionDelay = (i * 0.1) + 's';
+              }
+              observer.observe(el);
+            }
+          });
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // =============================================
+    // SCROLL PROGRESS BAR
+    // =============================================
+    window.addEventListener('scroll', () => {
+      const scrollTotal = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollProgress = (scrollTotal / height) * 100;
+      const progressBar = document.getElementById('scroll-progress-bar');
+      if (progressBar) {
+        progressBar.style.width = scrollProgress + '%';
+      }
+    });
   </script>
 
 </body>
