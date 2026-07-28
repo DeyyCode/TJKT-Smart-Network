@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TJKT Smart Network</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 
 
 </head>
@@ -78,7 +78,12 @@
       </div>
 
       <div class="hero-gambar">
-        <img src="img/jaringan.jpg" alt="Teknisi sedang melakukan instalasi jaringan komputer">
+        <div class="slideshow">
+          <img src="img/jaringan.jpg" alt="Instalasi jaringan 1">
+          <img src="img/jaringan2.jpg" alt="Instalasi jaringan 2">
+          <img src="img/jaringan4.jpg" alt="Instalasi jaringan 3">
+          <img src="img/jaringan4.jpg" alt="Instalasi jaringan 4">
+        </div>
       </div>
 
     </section>
@@ -310,15 +315,20 @@
     <section id="speedtest" class="speedtest-section">
       <div class="speedtest-header">
         <h2>🚀 Cek Kecepatan Internet Kamu</h2>
-        <p class="deskripsi-bagian">Ukur kecepatan download, upload, dan ping koneksimu secara real-time langsung dari browser.</p>
+        <p class="deskripsi-bagian">Ukur kecepatan download, upload, dan ping koneksimu secara real-time langsung dari
+          browser.</p>
       </div>
 
       <!-- IP Info Bar -->
       <div class="ip-info-bar">
-        <div class="ip-info-item"><span class="ip-info-label">IP Address</span><span id="ip-addr" class="ip-info-val">—</span></div>
-        <div class="ip-info-item"><span class="ip-info-label">ISP</span><span id="isp-name" class="ip-info-val">—</span></div>
-        <div class="ip-info-item"><span class="ip-info-label">Lokasi</span><span id="city-name" class="ip-info-val">—</span></div>
-        <div class="ip-info-item"><span class="ip-info-label">Jenis Koneksi</span><span id="connection-type" class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">IP Address</span><span id="ip-addr"
+            class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">ISP</span><span id="isp-name" class="ip-info-val">—</span>
+        </div>
+        <div class="ip-info-item"><span class="ip-info-label">Lokasi</span><span id="city-name"
+            class="ip-info-val">—</span></div>
+        <div class="ip-info-item"><span class="ip-info-label">Jenis Koneksi</span><span id="connection-type"
+            class="ip-info-val">—</span></div>
       </div>
 
       <!-- Gauge + Metrics -->
@@ -329,18 +339,16 @@
           <svg class="gauge-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#a855f7"/>
-                <stop offset="100%" stop-color="#ec4899"/>
+                <stop offset="0%" stop-color="#a855f7" />
+                <stop offset="100%" stop-color="#ec4899" />
               </linearGradient>
             </defs>
             <!-- Track -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="14"/>
+            <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(168,85,247,0.15)" stroke-width="14" />
             <!-- Arc -->
-            <circle id="gauge-bar" cx="100" cy="100" r="80" fill="none"
-              stroke="url(#gaugeGrad)" stroke-width="14" stroke-linecap="round"
-              stroke-dasharray="502" stroke-dashoffset="502"
-              transform="rotate(-90 100 100)"
-              style="transition: stroke-dashoffset 0.6s ease;"/>
+            <circle id="gauge-bar" cx="100" cy="100" r="80" fill="none" stroke="url(#gaugeGrad)" stroke-width="14"
+              stroke-linecap="round" stroke-dasharray="502" stroke-dashoffset="502" transform="rotate(-90 100 100)"
+              style="transition: stroke-dashoffset 0.6s ease;" />
           </svg>
           <div class="gauge-center">
             <span id="gauge-value" class="gauge-num">0</span>
@@ -370,7 +378,9 @@
 
       <!-- Progress -->
       <div class="speedtest-progress-wrap">
-        <div class="speedtest-progress-bar"><div id="progress-bar" class="speedtest-progress-fill"></div></div>
+        <div class="speedtest-progress-bar">
+          <div id="progress-bar" class="speedtest-progress-fill"></div>
+        </div>
         <p id="status-text" class="status-text">Tekan tombol untuk memulai pengukuran</p>
       </div>
 
@@ -386,7 +396,8 @@
     <section id="simulator" class="simulator-section">
       <div class="simulator-header">
         <h2>🖧 Network Simulator</h2>
-        <p class="deskripsi-bagian">Simulasikan jaringan komputer sendiri — sambungkan PC dan Router dengan kabel, lalu test koneksinya!</p>
+        <p class="deskripsi-bagian">Simulasikan jaringan komputer sendiri — sambungkan PC dan Router dengan kabel, lalu
+          test koneksinya!</p>
       </div>
 
       <!-- Toolbar -->
@@ -440,7 +451,8 @@
         </a>
 
         <!-- WhatsApp Card -->
-        <a href="https://wa.me/6289665831166" target="_blank" rel="noopener" class="kontak-card" id="card-wa" title="Chat WhatsApp">
+        <a href="https://wa.me/6289665831166" target="_blank" rel="noopener" class="kontak-card" id="card-wa"
+          title="Chat WhatsApp">
           <div class="kontak-card-icon">💬</div>
           <div class="kontak-card-label">Telepon / WhatsApp</div>
           <div class="kontak-card-value">0896-6583-1166</div>
@@ -448,7 +460,8 @@
         </a>
 
         <!-- Lokasi Card -->
-        <a href="https://maps.google.com/?q=SMK+Negeri+2+Surakarta" target="_blank" rel="noopener" class="kontak-card" id="card-lokasi" title="Lihat di Google Maps">
+        <a href="https://maps.google.com/?q=SMK+Negeri+2+Surakarta" target="_blank" rel="noopener" class="kontak-card"
+          id="card-lokasi" title="Lihat di Google Maps">
           <div class="kontak-card-icon">📍</div>
           <div class="kontak-card-label">Lokasi</div>
           <div class="kontak-card-value">SMK Negeri 2 Surakarta</div>
@@ -558,28 +571,28 @@
     (function () {
       // [CSS selector, animation class, stagger?]
       const groups = [
-        ['.hero-teks',              'slide-left',  false],
-        ['.hero-gambar',            'slide-right', false],
-        ['#layanan h2',             'slide-up',    false],
+        ['.hero-teks', 'slide-left', false],
+        ['.hero-gambar', 'slide-right', false],
+        ['#layanan h2', 'slide-up', false],
         ['#layanan .deskripsi-bagian', 'slide-up', false],
-        ['.kartu',                  'slide-up',    true ],
-        ['.literasi-header',        'slide-up',    false],
+        ['.kartu', 'slide-up', true],
+        ['.literasi-header', 'slide-up', false],
         ['.literasi-header .deskripsi-bagian', 'slide-up', false],
-        ['.speedtest-header h2',    'slide-up',    false],
+        ['.speedtest-header h2', 'slide-up', false],
         ['.speedtest-header .deskripsi-bagian', 'slide-up', false],
-        ['.ip-info-item',           'pop-in',      true ],
-        ['.metric-card',            'slide-left',  true ],
-        ['.gauge-wrapper',          'zoom-in',     false],
-        ['.simulator-header',       'slide-up',    false],
-        ['.simulator-toolbar',      'slide-up',    false],
-        ['.kontak h2',              'slide-up',    false],
-        ['.kontak .deskripsi-bagian', 'slide-up',  false],
-        ['.kontak-card',            'pop-in',      true ],
-        ['.kartu-detail',           'slide-up',    true ],
-        ['.section-estimasi',       'slide-up',    false],
-        ['.judul-estimasi',         'slide-up',    false],
-        ['.sim-legend',             'slide-up',    false],
-        ['.sim-ctrl-btn',           'pop-in',      true ],
+        ['.ip-info-item', 'pop-in', true],
+        ['.metric-card', 'slide-left', true],
+        ['.gauge-wrapper', 'zoom-in', false],
+        ['.simulator-header', 'slide-up', false],
+        ['.simulator-toolbar', 'slide-up', false],
+        ['.kontak h2', 'slide-up', false],
+        ['.kontak .deskripsi-bagian', 'slide-up', false],
+        ['.kontak-card', 'pop-in', true],
+        ['.kartu-detail', 'slide-up', true],
+        ['.section-estimasi', 'slide-up', false],
+        ['.judul-estimasi', 'slide-up', false],
+        ['.sim-legend', 'slide-up', false],
+        ['.sim-ctrl-btn', 'pop-in', true],
       ];
 
       const observer = new IntersectionObserver((entries) => {
